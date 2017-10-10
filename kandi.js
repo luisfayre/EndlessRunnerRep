@@ -58,23 +58,27 @@ var assetLoader = (function() {
     'rock'         : 'imgs/rock.png',
     'avatar_normal' : 'imgs/normal_walk.png',
     'lava'         : 'imgs/lava.png',
-    'grass1'        : 'imgs/grassMid1.png',
-    'grass2'        : 'imgs/grassMid2.png',
+    //Rocas
+    'rock1'        : 'imgs/rockMid1.png',
+    'rock2'        : 'imgs/rockMid2.png',
+    
     'bridge'        : 'imgs/bridge.png',
-    'plant'         : 'imgs/plant.png',
-    'bush1'         : 'imgs/bush1.png',
-    'bush2'         : 'imgs/bush2.png',
-    'cliff'         : 'imgs/grassCliffRight.png',
-    'spikes'        : 'imgs/spikes.png',
+
+    'plant'         : 'imgs/plant1.png',
+    'mrock1'         : 'imgs/mrock1.png',
+    'mrock2'         : 'imgs/mrock2.png',
+
+    'cliff'         : 'imgs/rockMid.png',
+    'fire'        : 'imgs/fire.png',
     'box'           : 'imgs/boxCoin.png',
-    'slime'         : 'imgs/slime.png'
+    'slime'         : 'imgs/fireslime.png'
   };
 
   //Sonidos
   this.sounds      = {
-    'bg'            : 'sounds/bg.mp3',
+    'bg'            : 'sounds/bg2.wav',
     'jump'          : 'sounds/jump.mp3',
-    'gameOver'      : 'sounds/gameOver.mp3'
+    'gameOver'      : 'sounds/gameOver2.mp3'
   };
 
   var assetsLoaded = 0;                                //Assets img cargados
@@ -433,7 +437,7 @@ function getType() {
   switch (platformHeight) {
     case 0:
     case 1:
-      type = Math.random() > 0.5 ? 'grass1' : 'grass2';
+      type = Math.random() > 0.5 ? 'rock1' : 'rock2';
       break;
     case 2:
       type = 'rock';
@@ -564,12 +568,12 @@ function spawnEnvironmentSprites() { //Spawn nuevos elementos cuando salen de la
       environment.push(new Sprite(
         canvas.width + platformWidth % player.speed,
         platformBase - platformHeight * platformSpacer- platformWidth,
-        'bush1'
+        'mrock1'
       ));
       environment.push(new Sprite(
         canvas.width + platformWidth % player.speed + platformWidth,
         platformBase - platformHeight * platformSpacer- platformWidth,
-        'bush2'
+        'mrock2'
       ));
     }
   }
@@ -582,7 +586,7 @@ function spawnEnemySprites() {//Spawn nuevos enemigos cuando salen de la pantall
     enemies.push(new Sprite(
       canvas.width + platformWidth % player.speed,
       platformBase - platformHeight * platformSpacer- platformWidth,
-      Math.random() > 0.5 ? 'spikes' : 'slime'
+      Math.random() > 0.5 ? 'fire' : 'slime'
     ));
   }
 }
